@@ -9,7 +9,7 @@ public class GroupAnagrams {
 
         for (String str : strs) {
             String key = Arrays.toString(str.chars().sorted().toArray());
-            List<String> group = grouped.getOrDefault(key, new ArrayList<>());
+            List<String> group = grouped.computeIfAbsent(key, _ -> new ArrayList<>());
             group.add(str);
             grouped.put(key, group);
         }
